@@ -1,0 +1,31 @@
+[gd_scene format=2]
+
+[node name="Game" type="Node2D"]
+
+[node name="Gameplay" type="Node2D" parent="."]
+
+[node name="UI" type="Node2D" parent="Gameplay"]
+
+[node name="Techtree" type="Node2D" parent="Gameplay/UI"]
+
+[node name="OnScreenUI" type="Node2D" parent="Gameplay/UI"]
+
+[node name="Entity\'s" type="Node2D" parent="Gameplay"]
+
+[node name="Player" type="Node2D" parent="Gameplay/Entity\'s"]
+
+[node name="Villagers" type="Node2D" parent="Gameplay/Entity\'s"]
+
+[node name="Enemy\'s" type="Node2D" parent="Gameplay/Entity\'s"]
+
+[node name="Animals" type="Node2D" parent="Gameplay/Entity\'s"]
+
+[node name="World" type="Node2D" parent="Gameplay"]
+
+[node name="Props" type="Node2D" parent="Gameplay/World"]
+
+[node name="Tiles" type="Node2D" parent="Gameplay/World"]
+
+[node name="Interactables" type="Node2D" parent="Gameplay/World"]
+
+[node name="Other" type="Node2D" parent="."]
