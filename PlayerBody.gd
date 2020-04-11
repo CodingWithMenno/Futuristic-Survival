@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-const SPEED = 200
+const SPEED = 10000
 const turn_speed = 0.25
 var velocity = Vector2()
 var targetPos = Vector2()
@@ -11,7 +11,7 @@ func _physics_process(delta):
 	targetPos = get_global_mouse_position()
 	lookAtMouse()
 	getInputs()
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity * delta)
 
 
 func lookAtMouse():
