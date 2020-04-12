@@ -36,8 +36,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Gameplay/Entity\'s/Player/PlayerBody"]
-visible = false
-current = true
 script = ExtResource( 3 )
 
 [node name="Villagers" type="Node2D" parent="Gameplay/Entity\'s"]

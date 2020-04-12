@@ -13,7 +13,7 @@ func _physics_process(delta):
 	getInputs()
 	velocity = move_and_slide(velocity * delta)
 
-
+#look at mouse
 func lookAtMouse():
 	var direction = get_angle_to(targetPos)
 	if abs(direction) < turn_speed:
@@ -22,18 +22,19 @@ func lookAtMouse():
 		if direction > 0: rotation += turn_speed
 		if direction < 0: rotation -= turn_speed
 
-
+#movement
 func getInputs():
 	velocity = Vector2()
-	
+
 	if Input.is_action_pressed("ui_down"):
-		velocity = Vector2(-SPEED, 0).rotated(rotation)
+		velocity.x = -SPEED 
 	if Input.is_action_pressed("ui_up"):
-		velocity = Vector2(SPEED, 0).rotated(rotation)
-		print_debug(self.position.distance_squared_to(targetPos))
+		velocity.x = SPEED 
 		if self.position.distance_squared_to(targetPos) < 1160000 and self.position.distance_squared_to(targetPos) > 1150000:
 			velocity = Vector2(0, 0).rotated(rotation)
 	if Input.is_action_pressed("ui_left"):
-		velocity = Vector2(0, -SPEED).rotated(rotation)
+		velocity.y = -SPEED 
 	if Input.is_action_pressed("ui_right"):
-		velocity = Vector2(0, SPEED).rotated(rotation)
+		velocity.y = SPEED 
+
+	velocity = velocity.rotated(rotation)
