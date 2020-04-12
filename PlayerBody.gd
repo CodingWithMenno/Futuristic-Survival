@@ -6,14 +6,17 @@ const turn_speed = 0.2
 var velocity = Vector2()
 var targetPos = Vector2()
 
+
 func _ready():
 	$PlayerSprite.rotate(0.5 * PI)
+
 
 func _physics_process(delta):
 	targetPos = get_global_mouse_position()
 	lookAtMouse()
 	getInputs()
 	velocity = move_and_slide(velocity * delta)
+
 
 #look at mouse
 func lookAtMouse():
@@ -24,10 +27,11 @@ func lookAtMouse():
 		if direction > 0: rotation += turn_speed
 		if direction < 0: rotation -= turn_speed
 
+
 #movement
 func getInputs():
 	velocity = Vector2()
-
+	
 	if Input.is_action_pressed("ui_down"):
 		velocity.x = -SPEED 
 	if Input.is_action_pressed("ui_up"):
