@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 const SPEED = 10000
-const turn_speed = 0.25
+const turn_speed = 0.2
 var velocity = Vector2()
 var targetPos = Vector2()
 
