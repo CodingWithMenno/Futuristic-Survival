@@ -6,6 +6,8 @@ const turn_speed = 0.2
 var velocity = Vector2()
 var targetPos = Vector2()
 
+func _ready():
+	$PlayerSprite.rotate(0.5 * PI)
 
 func _physics_process(delta):
 	targetPos = get_global_mouse_position()
