@@ -30,6 +30,9 @@ func getInputs():
 		velocity = Vector2(-SPEED, 0).rotated(rotation)
 	if Input.is_action_pressed("ui_up"):
 		velocity = Vector2(SPEED, 0).rotated(rotation)
+		print_debug(self.position.distance_squared_to(targetPos))
+		if self.position.distance_squared_to(targetPos) < 1160000 and self.position.distance_squared_to(targetPos) > 1150000:
+			velocity = Vector2(0, 0).rotated(rotation)
 	if Input.is_action_pressed("ui_left"):
 		velocity = Vector2(0, -SPEED).rotated(rotation)
 	if Input.is_action_pressed("ui_right"):
