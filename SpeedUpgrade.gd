@@ -1,6 +1,6 @@
 extends Button
 
-export var isShowing = false
+var isShowing = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,3 +8,4 @@ func _ready():
 
 func setShowing():
 	isShowing = !isShowing
+	print_debug("test")
