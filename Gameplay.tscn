@@ -39,6 +39,7 @@ texture = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Gameplay/Entity\'s/Player/PlayerBody"]
 script = ExtResource( 3 )
+followPlayer = false
 
 [node name="Villagers" type="Node2D" parent="Gameplay/Entity\'s"]
 
