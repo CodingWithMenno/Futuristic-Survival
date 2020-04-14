@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 
-const SPEED = 10000
-const turn_speed = 0.2
+const MAX_SPEED = 20000
+const TURN_SPEED = 0.2
+
 var velocity = Vector2()
 var targetPos = Vector2()
 
@@ -21,25 +22,26 @@ func _physics_process(delta):
 # Looks at the mouse
 func lookAtMouse():
 	var direction = get_angle_to(targetPos)
-	if abs(direction) < turn_speed:
+	if abs(direction) < TURN_SPEED:
 		rotation += direction
 	else:
-		if direction > 0: rotation += turn_speed
-		if direction < 0: rotation -= turn_speed
+		if direction > 0: rotation += TURN_SPEED
+		if direction < 0: rotation -= TURN_SPEED
 
 
 # Handles all the inputs for the player
 func getInputs():
 	velocity = Vector2()
-	
 	if Input.is_action_pressed("ui_down"):
-		velocity.x = -SPEED 
+		velocity.x = -MAX_SPEED
 	if Input.is_action_pressed("ui_up"):
-		velocity.x = SPEED 
+		velocity.x = MAX_SPEED 
 		if self.position.distance_squared_to(targetPos) < 1158000 and self.position.distance_squared_to(targetPos) > 1150000:
 			velocity.x = 0
 	if Input.is_action_pressed("ui_left"):
-		velocity.y = -SPEED 
+		velocity.y = -MAX_SPEED 
 	if Input.is_action_pressed("ui_right"):
-		velocity.y = SPEED 
+		velocity.y = MAX_SPEED 
+	
+	velocity = velocity.normalized() * MAX_SPEED
 	velocity = velocity.rotated(rotation)
