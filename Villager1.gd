@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const TURN_SPEED = 0.25
+const TURN_SPEED = 0.05
 const spawnPosition = Vector2(300, 900)
 const MAX_SPEED = 5000
 
@@ -22,14 +22,14 @@ func _physics_process(delta):
 	
 	checkForPlayer()
 	walkToTarget(delta)
-	lookAtTarget()
+	lookAtTarget(target)
 
 # Checks and handles if the player want to interact with the villager
 func checkForPlayer():
 	var playerPos = get_parent().get_parent().get_node("Player/PlayerBody").global_position
 	
-	if position.distance_to(playerPos) < 300:
-		look_at(playerPos)
+	if position.distance_to(playerPos) < 200:
+		lookAtTarget(playerPos)
 		target = Vector2(position.x, position.y)
 		
 		if Input.is_action_pressed("ui_e"):
@@ -57,8 +57,8 @@ func setTarget():
 
 
 # Looks at the target
-func lookAtTarget():
-	var direction = get_angle_to(target)
+func lookAtTarget(targetPos):
+	var direction = get_angle_to(targetPos)
 	if abs(direction) < TURN_SPEED:
 		rotation += direction
 	else:
