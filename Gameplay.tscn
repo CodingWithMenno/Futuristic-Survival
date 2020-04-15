@@ -1,13 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://PlayerBody.gd" type="Script" id=2]
 [ext_resource path="res://Camera2D.vs" type="Script" id=3]
 [ext_resource path="res://Dirt_A2.png" type="Texture" id=4]
 [ext_resource path="res://Gameplay.gd" type="Script" id=5]
+[ext_resource path="res://body.png" type="Texture" id=6]
+[ext_resource path="res://Villager1.gd" type="Script" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.699, 31.854 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 38.1496, 51.1284 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -42,6 +47,20 @@ script = ExtResource( 3 )
 
 [node name="Villagers" type="Node2D" parent="Gameplay/Entity\'s"]
 
+[node name="Villager1" type="KinematicBody2D" parent="Gameplay/Entity\'s/Villagers"]
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gameplay/Entity\'s/Villagers/Villager1"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Gameplay/Entity\'s/Villagers/Villager1"]
+position = Vector2( 0.287258, 0.205483 )
+scale = Vector2( 0.399056, 0.285975 )
+texture = ExtResource( 6 )
+
 [node name="Enemy\'s" type="Node2D" parent="Gameplay/Entity\'s"]
 
 [node name="Animals" type="Node2D" parent="Gameplay/Entity\'s"]
@@ -52,10 +71,11 @@ script = ExtResource( 3 )
 
 [node name="Tiles" type="Node2D" parent="Gameplay/World"]
 
-[node name="Node2D" type="Node2D" parent="Gameplay/World/Tiles"]
+[node name="Dirt" type="Node2D" parent="Gameplay/World/Tiles"]
 
-[node name="Sprite" type="Sprite" parent="Gameplay/World/Tiles/Node2D"]
+[node name="Sprite" type="Sprite" parent="Gameplay/World/Tiles/Dirt"]
 position = Vector2( 675.923, 383.975 )
 texture = ExtResource( 4 )
 
 [node name="Interactables" type="Node2D" parent="Gameplay/World"]
+position = Vector2( 0.513336, -1.02669 )
