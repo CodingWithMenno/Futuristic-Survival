@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const TURN_SPEED = 0.25
-const spawnPosition = Vector2(300, 300)
+const spawnPosition = Vector2(300, 900)
 const MAX_SPEED = 5000
 
 var target = Vector2()
@@ -12,6 +12,8 @@ var random = RandomNumberGenerator.new()
 
 func _ready():
 	setTarget()
+	position.x = spawnPosition.x
+	position.y = spawnPosition.y
 
 # Gets called every frame
 func _physics_process(delta):
@@ -29,6 +31,11 @@ func checkForPlayer():
 	if position.distance_to(playerPos) < 300:
 		look_at(playerPos)
 		target = Vector2(position.x, position.y)
+		
+		if Input.is_action_pressed("ui_e"):
+			get_parent().get_parent().get_parent().get_node("UI/VillagerUI/WindowDialog").popup(Rect2(position.x - 75, position.y - 320, 150, 250))
+	else :
+		get_parent().get_parent().get_parent().get_node("UI/VillagerUI/WindowDialog").hide()
 
 # Walks to the target
 func walkToTarget(delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://PlayerBody.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Gameplay.gd" type="Script" id=5]
 [ext_resource path="res://body.png" type="Texture" id=6]
 [ext_resource path="res://Villager1.gd" type="Script" id=7]
+[ext_resource path="res://WindowDialog.gd" type="Script" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.699, 31.854 )
@@ -24,6 +25,18 @@ script = ExtResource( 5 )
 [node name="Techtree" type="Node2D" parent="Gameplay/UI"]
 
 [node name="OnScreenUI" type="Node2D" parent="Gameplay/UI"]
+
+[node name="VillagerUI" type="Node2D" parent="Gameplay/UI"]
+
+[node name="WindowDialog" type="WindowDialog" parent="Gameplay/UI/VillagerUI"]
+margin_left = 263.858
+margin_top = 106.781
+margin_right = 311.858
+margin_bottom = 146.781
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Entity\'s" type="Node2D" parent="Gameplay"]
 
@@ -48,6 +61,7 @@ script = ExtResource( 3 )
 [node name="Villagers" type="Node2D" parent="Gameplay/Entity\'s"]
 
 [node name="Villager1" type="KinematicBody2D" parent="Gameplay/Entity\'s/Villagers"]
+position = Vector2( 39.4627, 51.8431 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
