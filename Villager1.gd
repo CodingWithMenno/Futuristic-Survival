@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const TURN_SPEED = 0.05
+const TURN_SPEED = 0.08
 const spawnPosition = Vector2(300, 900)
 const MAX_SPEED = 5000
 
@@ -51,8 +51,8 @@ func isTargetReached():
 # Sets a new random target
 func setTarget():
 	random.randomize()
-	var randomX = random.randf_range(spawnPosition.x -750, spawnPosition.x + 750)
-	var randomY = random.randf_range(spawnPosition.y - 750, spawnPosition.y + 750)
+	var randomX = random.randf_range(spawnPosition.x -300, spawnPosition.x + 300)
+	var randomY = random.randf_range(spawnPosition.y - 300, spawnPosition.y + 300)
 	target = Vector2(randomX, randomY)
 
 
