@@ -33,9 +33,14 @@ func checkForPlayer():
 		target = Vector2(position.x, position.y)
 		
 		if Input.is_action_pressed("ui_e"):
-			get_parent().get_parent().get_parent().get_node("UI/VillagerUI/WindowDialog").popup(Rect2(position.x - 75, position.y - 320, 150, 250))
-	else :
-		get_parent().get_parent().get_parent().get_node("UI/VillagerUI/WindowDialog").hide()
+			openUI()
+
+# Opens the villager UI
+func openUI():
+	if get_parent().get_parent().get_parent().get_parent().get_node("Gameplay/VillagerUI") == null:
+		var node = load("res://scenes/VillagerUI.tscn").instance()
+		get_parent().get_parent().get_parent().get_parent().get_node("Gameplay").add_child(node)
+		get_node("/root/Game/Gameplay/Entity's/Player/PlayerBody").windowIsOpen = true
 
 # Walks to the target
 func walkToTarget(delta):

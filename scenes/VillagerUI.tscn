@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/VillagerUI.gd" type="Script" id=1]
+
+[node name="VillagerUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.85876
+margin_right = 3.85876
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 925.901
+margin_top = 504.889
+margin_right = 965.901
+margin_bottom = 544.889

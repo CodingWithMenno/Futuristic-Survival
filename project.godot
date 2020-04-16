@@ -16,8 +16,8 @@ _global_script_class_icons={
 [application]
 
 config/name="Futuristic Survival"
-run/main_scene="res://Gameplay.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/Gameplay.tscn"
+config/icon="res://images/icon.png"
 
 [display]
 
