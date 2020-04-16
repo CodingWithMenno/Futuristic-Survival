@@ -17,7 +17,7 @@ func _ready():
 
 # Gets called every frame
 func _physics_process(delta):
-	if isTargetReached():
+	if isTargetReached() or target == Vector2():
 		setTarget()
 	
 	checkForPlayer()
@@ -40,7 +40,10 @@ func checkForPlayer():
 # Walks to the target
 func walkToTarget(delta):
 	velocity = position.direction_to(target) * MAX_SPEED
-	velocity = move_and_slide(velocity * delta)
+	if !test_move(Transform2D(rotation, position), velocity * delta):
+		velocity = move_and_slide(velocity * delta)
+	else :
+		target = Vector2()
 
 # Checks if the target is reached
 func isTargetReached():
