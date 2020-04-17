@@ -2,8 +2,10 @@ extends KinematicBody2D
 
 
 const TURN_SPEED = 0.2
+const MAX_STAMINA = 250
 
-var MAX_SPEED = 17000
+var stamina = MAX_STAMINA
+var speed = 16000
 var velocity = Vector2()
 var targetPos = Vector2()
 
@@ -39,24 +41,30 @@ func getInputs():
 		if Input.is_action_pressed("ui_t"):
 			windowIsOpen = true
 			openTechtree()
-		if Input.is_action_pressed("ui_shift"):
-			MAX_SPEED = 23000
+		if Input.is_action_pressed("ui_shift") and stamina > 0:
+			speed = 25000
+			stamina -= 1
 		else:
-			MAX_SPEED = 17000
+			if stamina == 0:
+				stamina = -201 # Needs to be a uneven number
+			speed = 16000
+			stamina += 2
+			if stamina >= MAX_STAMINA:
+				stamina = MAX_STAMINA
 		
 		# Movement
 		if Input.is_action_pressed("ui_down"):
-			velocity.x = -MAX_SPEED
+			velocity.x = -speed
 		if Input.is_action_pressed("ui_up"):
-			velocity.x = MAX_SPEED 
+			velocity.x = speed 
 			if self.position.distance_squared_to(targetPos) < 1158000 and self.position.distance_squared_to(targetPos) > 1150000:
 				velocity.x = 0
 		if Input.is_action_pressed("ui_left"):
-			velocity.y = -MAX_SPEED 
+			velocity.y = -speed 
 		if Input.is_action_pressed("ui_right"):
-			velocity.y = MAX_SPEED 
+			velocity.y = speed 
 		
-		velocity = velocity.normalized() * MAX_SPEED
+		velocity = velocity.normalized() * speed
 		velocity = velocity.rotated(rotation)
 
 # Opens the techtree
