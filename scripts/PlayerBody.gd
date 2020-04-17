@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 
-const MAX_SPEED = 20000
 const TURN_SPEED = 0.2
 
+var MAX_SPEED = 17000
 var velocity = Vector2()
 var targetPos = Vector2()
 
@@ -34,12 +34,16 @@ func lookAtMouse():
 func getInputs():
 	velocity = Vector2()
 	
-	# Other input
-	if Input.is_action_pressed("ui_t"):
-		windowIsOpen = true
-		openTechtree()
-	
 	if !windowIsOpen:
+		# Other input
+		if Input.is_action_pressed("ui_t"):
+			windowIsOpen = true
+			openTechtree()
+		if Input.is_action_pressed("ui_shift"):
+			MAX_SPEED = 23000
+		else:
+			MAX_SPEED = 17000
+		
 		# Movement
 		if Input.is_action_pressed("ui_down"):
 			velocity.x = -MAX_SPEED

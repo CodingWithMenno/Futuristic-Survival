@@ -37,7 +37,7 @@ func checkForPlayer():
 
 # Opens the villager UI
 func openUI():
-	if get_parent().get_parent().get_parent().get_parent().get_node("Gameplay/VillagerUI") == null:
+	if get_node("/root/Game/Gameplay/Entity's/Player/PlayerBody").windowIsOpen == false:
 		var node = load("res://scenes/VillagerUI.tscn").instance()
 		get_parent().get_parent().get_parent().get_parent().get_node("Gameplay").add_child(node)
 		get_node("/root/Game/Gameplay/Entity's/Player/PlayerBody").windowIsOpen = true
