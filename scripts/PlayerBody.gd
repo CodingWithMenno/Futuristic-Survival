@@ -35,7 +35,6 @@ func lookAtMouse():
 # Handles all the inputs for the player
 func getInputs(delta):
 	velocity = Vector2()
-	print(stamina)
 	if !windowIsOpen:
 		# Other input
 		if Input.is_action_pressed("ui_t"):
