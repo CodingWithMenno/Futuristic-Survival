@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 const TURN_SPEED = 0.2
-const MAX_STAMINA = 250
+const MAX_STAMINA = 5
 
 var stamina = MAX_STAMINA
 var speed = 16000
@@ -18,7 +18,7 @@ func _ready():
 func _physics_process(delta):
 	targetPos = get_global_mouse_position()
 	lookAtMouse()
-	getInputs()
+	getInputs(delta)
 	velocity = move_and_slide(velocity * delta)
 
 
@@ -33,22 +33,22 @@ func lookAtMouse():
 
 
 # Handles all the inputs for the player
-func getInputs():
+func getInputs(delta):
 	velocity = Vector2()
-	
+	print(stamina)
 	if !windowIsOpen:
 		# Other input
 		if Input.is_action_pressed("ui_t"):
 			windowIsOpen = true
 			openTechtree()
 		if Input.is_action_pressed("ui_shift") and stamina > 0:
+			if stamina < 0.5:
+				stamina = -2
 			speed = 25000
-			stamina -= 1
+			stamina -= (1 * delta)
 		else:
-			if stamina == 0:
-				stamina = -201 # Needs to be a uneven number
 			speed = 16000
-			stamina += 2
+			stamina += (1 * delta)
 			if stamina >= MAX_STAMINA:
 				stamina = MAX_STAMINA
 		
