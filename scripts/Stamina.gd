@@ -6,7 +6,7 @@ func _ready():
 	$TextureProgress.step = 0.1
 
 # Gets called every frame
-func _process(delta):
+func _process(_delta):
 	set_global_position(get_node("/root/Game/Gameplay/Entity's/Player/PlayerBody").position)
 	setStamina()
 
